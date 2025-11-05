@@ -1,4 +1,0 @@
-Name : Parth Kalbhor
-Class : TE-AIML
-Subject : WAD
-Description : This is file 2
