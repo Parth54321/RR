@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProjectCategory {
+  AGENTIC_AI
+  GENAI
+  RAG_SYSTEMS
+  AI_AUTOMATION
+  MULTI_AGENT_SYSTEMS
+  LLM_APPLICATIONS
+  RESEARCH
+}
+
+model Project {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  subtitle        String?
+  description     String
+  category        ProjectCategory
+  status          String
+  githubUrl       String?
+  liveUrl         String?
+  architectureUrl String?
+  metrics         Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  contentMdx  String
+  tags        String[]
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
